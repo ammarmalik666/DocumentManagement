@@ -1,0 +1,236 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+
+input.color_r_input[name=color] {
+  display: none;
+}
+input[name=color]:checked + label.color_label span {
+  transform: scale(1.25);
+}
+input[name=color]:checked + label.color_label span {
+  border: 2px solid #363534;
+}
+input.color_r_input[name=gutter_color] {
+  display: none;
+}
+input[name=gutter_color]:checked + label.color_label span {
+  transform: scale(1.25);
+}
+input[name=gutter_color]:checked + label.color_label span {
+  border: 2px solid #363534;
+}
+input.color_r_input[name=painted_color] {
+  display: none;
+}
+input[name=painted_color]:checked + label.color_label span {
+  transform: scale(1.25);
+}
+input[name=painted_color]:checked + label.color_label span {
+  border: 2px solid #363534;
+}
+
+label.color_label {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+label.color_label:hover span {
+  transform: scale(1.25);
+}
+label.color_label span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+label.color_label span.FFFFBE {
+  background: #FFFFBE;
+}
+label.color_label span.FEE7BD {
+  background: #FEE7BD;
+}
+label.color_label span.f8d8c9 {
+  background: #f8d8c9;
+}
+label.color_label span.fec0c1 {
+  background: #fec0c1;
+}
+label.color_label span.ffb4c0 {
+  background: #ffb4c0;
+}
+label.color_label span.ffc2fd {
+  background: #ffc2fd;
+}
+label.color_label span.e1c9f9 {
+  background: #e1c9f9;
+}
+label.color_label span.d0a7f5 {
+  background: #d0a7f5;
+}
+label.color_label span.a561e8 {
+  background: #a561e8;
+}
+label.color_label span._8a2ae4 {
+  background: #8a2ae4;
+}
+label.color_label span._6f19b8 {
+  background: #6f19b8;
+}
+label.color_label span._400c70 {
+  background: #400c70;
+}
+label.color_label span.c2fdc3 {
+  background: #c2fdc3;
+}
+label.color_label span._99ff9b {
+  background: #99ff9b;
+}
+label.color_label span._50fe4f {
+  background: #50fe4f;
+}
+label.color_label span._01fe05 {
+  background: #01fe05;
+}
+label.color_label span._01b102 {
+  background: #01b102;
+}
+label.color_label span._056501 {
+  background: #056501;
+}
+label.color_label span.ffff9d {
+  background: #ffff9d;
+}
+label.color_label span.fffe4e {
+  background: #fffe4e;
+}
+label.color_label span.fffe06 {
+  background: #fffe06;
+}
+label.color_label span.b4b303 {
+  background: #b4b303;
+}
+label.color_label span._686601 {
+  background: #686601;
+}
+label.color_label span.FEDB9B {
+  background: #FEDB9B;
+}
+label.color_label span.ffc150 {
+  background: #ffc150;
+}
+label.color_label span.fda601 {
+  background: #fda601;
+}
+label.color_label span.b47504 {
+  background: #b47504;
+}
+label.color_label span._654200 {
+  background: #654200;
+}
+label.color_label span.f4c7a6 {
+  background: #f4c7a6;
+}
+label.color_label span.E99A61 {
+  background: #E99A61;
+}
+label.color_label span.df7021 {
+  background: #df7021;
+}
+label.color_label span._9f4d15 {
+  background: #9f4d15;
+}
+label.color_label span._72390c {
+  background: #72390c;
+}
+label.color_label span.fe9a9c {
+  background: #fe9a9c;
+}
+label.color_label span.fe4c4a {
+  background: #fe4c4a;
+}
+label.color_label span.ff0604 {
+  background: #ff0604;
+}
+label.color_label span.b40200 {
+  background: #b40200;
+}
+label.color_label span._670003 {
+  background: #670003;
+}
+label.color_label span._800114 {
+  background: #800114;
+}
+label.color_label span.cc0021 {
+  background: #cc0021;
+}
+label.color_label span.ff1a41 {
+  background: #ff1a41;
+}
+label.color_label span.ff6684 {
+  background: #ff6684;
+}
+label.color_label span.ffb4c0 {
+  background: #ffb4c0;
+}
+label.color_label span._660167 {
+  background: #660167;
+}
+label.color_label span.b201b3 {
+  background: #b201b3;
+}
+label.color_label span.ff00fe {
+  background: #ff00fe;
+}
+label.color_label span.ff4cfb {
+  background: #ff4cfb;
+}
+label.color_label span.ff9bfe {
+  background: #ff9bfe;
+}
+label.color_label span.c4c5fe {
+  background: #c4c5fe;
+}
+label.color_label span._9996fd {
+  background: #9996fd;
+}
+label.color_label span._504dff {
+  background: #504dff;
+}
+label.color_label span._1700ff {
+  background: #1700ff;
+}
+label.color_label span._0d00b2 {
+  background: #0d00b2;
+}
+label.color_label span._050066 {
+  background: #050066;
+}
+
+label.color_label span.E2E2E2 {
+  background: #E2E2E2;
+}
+
+label.color_label span.AAAAAA {
+  background: #AAAAAA;
+}
+
+label.color_label span._717171 {
+  background: #717171;
+}
+
+label.color_label span._383838 {
+  background: #383838;
+}
+
+label.color_label span._1C1C1C {
+  background: #1C1C1C;
+}
+
+label.color_label span._000000 {
+  background: #000000;
+}
+
+label.color_label span.ffabb8 {
+  background: #ffabb8;
+}

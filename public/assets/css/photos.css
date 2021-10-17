@@ -1,0 +1,115 @@
+.preview-image {height: 155px; width: 145px; position: relative; border-radius:2px; display: inline-block; -webkit-transition: background .15s; float:left; transition: background .15s; padding:5px; vertical-align: top; background-color: #f6f6f6}
+.preview-image.highlight .duplicate, .preview-image.highlight .select-cont, .preview-image.highlight .image-error {display:none}
+.preview-images-zone .preview-image{margin:0 4px 5px 0}
+.preview-image input[type="text"] {border:1px solid #ccc; width:100%; position: absolute; left: 0; bottom: 0;}
+.preview-image.error {background-color: #dc1714}
+.preview-image.error .image-error {position: absolute;width: 135px;background: #dc1714;color: #fff;text-transform: uppercase;font-weight: 500;padding: 5px;bottom: 0; font-size:11px}
+.preview-image > .image-zone {width: 100%; height: 100%; overflow: hidden; background-color:#fff; background-size: cover; background-position: 50%; background-repeat: no-repeat;}
+.preview-image > .image-zone.blurbox {-webkit-filter: blur(5px); -moz-filter: blur(5px); -ms-filter: blur(5px); -o-filter: blur(5px); filter: blur(5px);}
+.preview-image > .tools-edit-image {position: absolute; z-index: 100; color: #fff; bottom: 0; width: 100%; text-align: center; margin-bottom: 10px; display: none}
+.preview-image > .image-cancel {cursor: pointer; position: absolute; right: 5px; top: 5px; z-index: 1; width:20px; height:20px; background:#0060df; color:#fff; text-align:center}
+.preview-image > .image-cancel i {height:13px; line-height:24px; display: block; position: absolute; top: -2px; right: 4px;}
+.preview-image > .image-cancel {background:#0060df}
+.preview-image.error > .image-cancel {background:#dc1714}
+.preview-image > .cover.active {position: absolute; cursor: pointer; left: 13px; top: 13px; border-radius: 1px; background: #f5a523; border: 1px solid #f5a523; color: #fff; padding: 0 5px; font-size: 11px; text-transform: uppercase}
+.preview-image > .cover.active i {height: 12px; margin: 2px 0 0 4px; float: right;}
+.preview-image:hover > .image-zone {cursor: move}
+.preview-image.dublicate-img:hover > .image-zone{cursor:auto}
+.duplicate {position: absolute; top: 5px; bottom: 5px; left: 5px; right: 5px; font-size: 12px; background: rgba(0,0,0,.5); text-align: center; color: #fff; padding: 43px 0;}
+.duplicate .act {text-decoration: underline; cursor: pointer;}
+.valign {position: relative; top: 50%; transform: translateY(-50%)}
+.dashed-placeholder {height: 155px; width: 145px; position: relative; background: #f3f5f8; display:inline-block; margin:0 5px 0 0; float: left;}
+
+.loader {position: absolute; margin: 0px auto; top:5px; width: 135px; height: 145px;}
+.loader:before {content: ''; display: block; padding-top: 100%}
+.circular {-webkit-animation: rotate 2s linear infinite; animation: rotate 2s linear infinite; height: 100%; -webkit-transform-origin: center center; -ms-transform-origin: center center; transform-origin: center center; width: 50%; max-width:75px; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto}
+.path {stroke-dasharray: 1, 200; stroke-dashoffset: 0; -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite; animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite; stroke-linecap: round;}
+@-webkit-keyframes 
+rotate {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes 
+rotate {  
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes 
+dash {  
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124;
+	}
+}
+@keyframes 
+dash {  
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -35;
+	}
+	100% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -124;
+	}
+}
+@-webkit-keyframes 
+color {  100%, 0% {
+		stroke: #fff;
+	}
+}
+@keyframes 
+color {  100%, 0% {
+		stroke: #fff;
+	}
+}
+.or_whatsapp p {color:#41bb49; font-size:13px}
+.or_whatsapp p span {float:left}
+.or_whatsapp p font {float:left; margin:1px 5px 0 5px}
+.add-photos {cursor: pointer; text-align: center; text-align: center; align-items: center; width:100%; float:left; background:#f3f5f8; position:relative}
+.add-photos:not(.inline) {cursor:auto}
+.add-photos.desktop:not(.inline) {border:2px dashed #e0e4eb}
+.add-photos.desktop:not(.inline) .start-counting{padding: 10px; position: absolute; right: 0; top:0; color: #989898; display:block; font-size: 12px;}
+.add-photos.desktop.inline{background: #fff; cursor: inherit; margin:0 5px 0 0}
+.add-photos.desktop.inline .inner-photos {height: 155px; vertical-align: top; width: 145px; border: 1px dashed #929292; border-radius: 2px; padding:20px 15px; margin:0 5px 5px 0; position:relative}
+.inner-photos {display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 250px; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; height: auto; margin: 40px auto 25px;}
+.add-photos.desktop.inline .inner-photos {display:inline-block; float:left;}
+.add-photos.desktop:not(.inline) .inner-photos .photo-icon {width: 72px; height: 72px;}
+.inner-photos .photo-icon {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='38' viewBox='0 0 44 38'%3E %3Cg fill='none' fill-rule='nonzero'%3E %3Cpath fill='%23f3f5f8' d='M26.356.524c-7.171-1.59-14.947.473-20.174 5.672C-2.976 15.26-2.717 34.38 12.1 37.688c12.053 2.707 8.554-13.147 21.124-11.342 2.117.3 8.77.215 10.627-6.832.778-3.093-.993-15.38-17.495-18.99z'/%3E %3Cpath fill='%23FFF' d='M17.645 8.408l17.947 6.237-6.237 17.947-17.947-6.237z'/%3E %3Cpath fill='%230060df' d='M28.977 34c-.088 0-.131 0-.219-.044l-18.322-6.362c-.349-.13-.523-.479-.393-.828l6.37-18.302c.043-.174.174-.305.349-.392a.632.632 0 0 1 .48-.043l18.322 6.362c.349.13.523.48.393.828l-6.37 18.302c-.043.174-.174.305-.349.392a.468.468 0 0 1-.261.087zm-17.494-7.408l17.101 5.926 5.933-17.081L17.416 9.51l-5.933 17.082z'/%3E %3Cpath fill='%23FFF' d='M9 8h19v19H9z'/%3E %3Cpath fill='%230060df' d='M27.368 27H8.632A.648.648 0 0 1 8 26.368V7.632C8 7.295 8.295 7 8.632 7h18.736c.337 0 .632.295.632.632v18.736a.648.648 0 0 1-.632.632zM9.263 25.737h17.474V8.263H9.263v17.474z'/%3E %3Cpath fill='%234DDB9E' d='M28 21.767l-4.878-5.187c-.728-.773-1.883-.773-2.61 0l-2.568 2.73c-.728.773-1.883.773-2.61 0l-.386-.41c-.727-.773-1.883-.773-2.61 0L9 22.45V28h19v-6.233z'/%3E %3Cpath fill='%230060df' d='M27.436 29H8.634C8.296 29 8 28.69 8 28.337v-5.39c0-.176.085-.353.169-.486l3.296-3.446a2.412 2.412 0 0 1 1.732-.75c.676 0 1.268.264 1.732.75l.38.398a1.162 1.162 0 0 0 1.69 0l2.536-2.65c.972-1.017 2.535-1.017 3.465 0l4.816 5.036c.127.132.17.309.17.486v6.008a.57.57 0 0 1-.55.707zM9.268 27.675h17.534v-5.081l-4.647-4.86a1.162 1.162 0 0 0-1.69 0l-2.536 2.65c-.971 1.017-2.535 1.017-3.464 0l-.38-.397a1.162 1.162 0 0 0-1.69 0l-3.127 3.27v4.418z'/%3E %3Ccircle cx='16' cy='13' r='2' fill='%23fff404'/%3E %3Cpath fill='%230060df' d='M16.5 16a2.49 2.49 0 0 1-2.5-2.5 2.49 2.49 0 0 1 2.5-2.5 2.49 2.49 0 0 1 2.5 2.5 2.49 2.49 0 0 1-2.5 2.5zm0-3.81c-.714 0-1.31.596-1.31 1.31 0 .714.596 1.31 1.31 1.31.714 0 1.31-.596 1.31-1.31 0-.714-.596-1.31-1.31-1.31z'/%3E %3C/g%3E %3C/svg%3E"); background-size: contain; background-position: 50%; height: 60px; background-repeat: no-repeat;}
+.photo-title {margin: 0; text-align: left;}
+div.preview-images-zone > div.dashed-placeholder:nth-child(2):after {content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; border: 2px dashed #e0e4eb; background-color: transparent;}
+.add-photos.desktop.inline .photo-title {text-align:center; width:100%}
+.add-photos.desktop.inline .uploaded-count {font-size:11px; margin:4px 0 0 0}
+.inner-photos .photo-title .photos-cta {display: inline-block; padding: 0 20px; line-height: 36px; color: #fff; background-color: #0060df; border-radius: 3px; margin-top: 6px; font-size:13px}
+.inner-photos .photo-title .photos-cta i {float: left; margin: 2px 5px 0 0; height: 34px; font-size:13px; padding:10px 0 0; line-height: normal;}
+.add-photos.desktop.inline .inner-photos .photo-title .photos-cta {font-size:12px; padding:0 10px}
+.inner-photos .photo-title .photos-sub {font-size: 10px; color: #7f7f7f; font-weight: 400; margin: 7px 0}
+.add-photos.desktop.inline .photos-sub {display:none}
+.photos-txt-cont {display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; text-align: left; width: 100%; margin: 0 auto 25px; max-width: 600px;}
+.add-photos.desktop.inline .photos-txt-cont {margin-top:20px}
+.photos-txt-cont .txt-cont {font-size:13px; color:#7f7f7f}
+.photos-txt-cont .txt-cont b {color:#000; font-weight:500}
+.photos-txt-cont .txt-cont span {display: inline-block; vertical-align: top; padding:0 20px 0 5px; font-weight:300}
+.photos-txt-cont .txt-cont i {display: inline-block; margin:2px 0 0 0; vertical-align: middle; color: #0060df; font-size: 18px;}
+.posting-form .text-area textarea {box-shadow: none; text-align: justify; border: none; border-radius: 0; border-bottom: 1px solid #e0e4eb; width:100%}
+.posting-form .text-area .minitext {text-align: right; font-size: 12px; color: #a6a6a6; margin: 6px 0 0 0; font-weight:300}
+.w-msg {background: #fff9c4; float:left; padding:5px 10px}
+.w-msg p {margin:0; padding:4px}
+.add-photos input[type="file"] {width: 100%; height: 100%; opacity: 0; overflow: hidden; position: absolute; top: 0; left: 0; cursor: pointer}
+.error-valid {float:left; width:100%}
+.error-valid p span.errwh {color:#f46a6a}
