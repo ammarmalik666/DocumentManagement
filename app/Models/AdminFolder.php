@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdminUpload extends Model
+class AdminFolder extends Model
 {
     use HasFactory;
-    protected $table = "admin_uploads";
+    protected $table = "admin_folders";
     protected $fillable = [
         'client_id',
-        'file',
-        'filename',
+        'folder_name',
+        'access_slug',
         'slug',
-        'status'
+        'status',
     ];
 }

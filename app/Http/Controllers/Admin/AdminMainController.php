@@ -240,7 +240,7 @@ class AdminMainController extends Controller
     {
         $request->validate([
           'file' => 'required',
-          'file.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf,docx,xlsx|max:2048'
+          'file.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf,docx,xlsx,ppt,pptx|max:2048'
         ]);
         $client_id = $request->client_id;
         if($request->hasfile('file')) {
@@ -281,4 +281,20 @@ class AdminMainController extends Controller
             return back()->withErrors('UnknownError');
         }
     }
-}   
+    public function create_folder()
+    {
+        function generate_salt($len = 20)
+        {
+            $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$_';
+            $l = strlen($chars) - 1;
+            $str = '';
+            for ($i = 0; $i < $len; ++$i) {
+                $str .= $chars[rand(0, $l)];
+            }
+            return $str;
+        }
+        $salt = generate_salt();
+        return $salt;
+    }
+
+}

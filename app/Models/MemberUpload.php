@@ -13,6 +13,7 @@ class MemberUpload extends Model
         'client_id',
         'file',
         'filename',
+        'slug',
         'status'
     ];
 }

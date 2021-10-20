@@ -33,6 +33,7 @@ Route::group(['middleware' => ['AdminAuth']], function(){
 	Route::GET('/admin/{id}/access-folder', [AdminMainController::class,'access_folder_view']);
 	Route::GET('/admin/{id}/member-files', [AdminMainController::class,'member_files']);
 	Route::POST('/admin/member-files/upload', [AdminMainController::class,'upload_member_files'])->name('member.uploadfiles');
+	Route::GET('/admin/create-folder', [AdminMainController::class,'create_folder']);
 	Route::GET('/admin/{id}/admin-files', [AdminMainController::class,'admin_files']);
 	Route::POST('/admin/admin-files/upload', [AdminMainController::class,'upload_admin_files'])->name('admin.uploadfiles');
 	Route::POST('/member-files/delete', [AdminMainController::class,'delete_member_files'])->name('delete.member-file');

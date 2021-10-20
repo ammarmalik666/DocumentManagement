@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MemberUploads extends Migration
+class AdminUploadsMigrations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class MemberUploads extends Migration
      */
     public function up()
     {
-        Schema::create('member_uploads', function (Blueprint $table) {
+        Schema::create('admin_uploads', function (Blueprint $table) {
             $table->id();
             $table->string('client_id');
             $table->string('file');
             $table->string('filename');
+            $table->string('slug')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class MemberUploads extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_uploads');
+        Schema::dropIfExists('admin_uploads');
     }
 }

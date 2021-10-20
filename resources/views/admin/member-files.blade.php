@@ -52,6 +52,18 @@
                                 <div class="alert alert-danger" role="alert">
                                     File deleted successfully.
                                 </div>
+                            @elseif($errors->first() == 'FolderCreated')
+                                <div class="alert alert-success" role="alert">
+                                    File not uploaded. Check your internet coonection and try again.
+                                </div>
+                            @elseif($errors->first() == 'FolderNotCreated')
+                                <div class="alert alert-danger" role="alert">
+                                    Folder not created. Check your internet coonection and try again.
+                                </div>
+                            @elseif($errors->first() == 'folder_deleted')
+                                <div class="alert alert-danger" role="alert">
+                                    Folder deleted successfully.
+                                </div>
                             @elseif($errors->first() == 'UnknownError')
                                 <div class="alert alert-warning" role="alert">
                                     Check your internet coonection and try again.
