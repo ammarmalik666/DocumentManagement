@@ -54,7 +54,7 @@
                                 </div>
                             @elseif($errors->first() == 'FolderCreated')
                                 <div class="alert alert-success" role="alert">
-                                    File not uploaded. Check your internet coonection and try again.
+                                    Folder uploaded successfully
                                 </div>
                             @elseif($errors->first() == 'FolderNotCreated')
                                 <div class="alert alert-danger" role="alert">
@@ -80,15 +80,12 @@
                                 <div class="col-xl-9 col-sm-6">
                                     <form class="mt-4 mt-sm-0 float-sm-end d-flex align-items-center">
                                         <div class="dropdown mb-2 me-2">
-                                            <a class="btn btn-sm btn-outline-primary" href="javascript:void(0)" id="show-file-div">
-                                                <i class="bx bx-file me-1"></i> File
+                                            <a class="btn btn-sm btn-outline-primary" href="javascript:void(0)" id="show-folder-div">
+                                                <i class="bx bx-file me-1"></i> Create Folder
                                             </a>
-                                        </div>
-                                        <div class="search-box mb-2 me-2">
-                                            <div class="position-relative">
-                                                <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
-                                                <i class="bx bx-search-alt search-icon"></i>
-                                            </div>
+                                            <a class="btn btn-sm btn-outline-primary" href="javascript:void(0)" id="show-file-div">
+                                                <i class="bx bx-file me-1"></i> Upload File
+                                            </a>
                                         </div>
                                     </form>
                                 </div>
@@ -100,6 +97,15 @@
                                     <form action="{{ route('member.uploadfiles') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="client_id" value="{{ $client_id }}">
+                                        <div class="form-group mb-3">
+                                            <label for="">Filename</label>
+                                            <input type="text" class="form-control" placeholder="Enter file name" name="filename">
+                                            @error('filename')
+                                                <span>
+                                                    <p style="font-size:13px!important; color: #fd0710!important;">{{ $message }}*</p>
+                                                </span>
+                                            @enderror
+                                        </div>
                                         <div class="form-group mb-3">
                                             <label for="">Upload Files</label>
                                             <input type="file" class="form-control" placeholder="Upload Files" name="file">
@@ -116,18 +122,40 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="box folder-upload-div">
+                            <div class="row mb-4">
+                                <div class="col-md-6" id="dropzone">
+                                    <form action="{{ route('member.create_folder') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="client_id" value="{{ $client_id }}">
+                                        <div class="form-group mb-3">
+                                            <label for="">Folder Name</label>
+                                            <input type="text" class="form-control" placeholder="Enter Folder Name" name="folder_name">
+                                            @error('folder_name')
+                                            <span>
+                                                <p style="font-size:13px!important; color: #fd0710!important;">{{ $message }}*</p>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary">Create Folder</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mt-0">
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-hover mb-0">
                                     <thead>
                                         <tr>
                                           <th scope="col">Name</th>
-                                          <th scope="col">Date modified</th>
+                                          <th scope="col">Date</th>
                                           <th scope="col">Action</th>
                                         </tr>
                                       </thead>
                                     <tbody>
-                                        @if ($files->Count() == 0)
+                                        @if ($files->Count() == 0 AND $folders->Count() == 0)
                                             <tr>
                                                 <td colspan="3">
                                                     <div class="alert alert-info text-center" role="alert">
@@ -136,6 +164,23 @@
                                                 </td>
                                             </tr>
                                         @else
+                                            @foreach ($folders as $folder)
+                                                <tr>
+                                                    <td>
+                                                        <a href="/admin/{{ $folder->client_id }}/member-files/{{ $folder->slug }}" class="text-dark fw-medium">
+                                                            <i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i>
+                                                            {{ $folder->folder_name }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{  date("d M Y", strtotime($folder->created_at)) }}</td>
+                                                    <td>
+                                                        <a class="btn btn-danger waves-effect waves-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-folder-modal" 
+                                                        onclick="deleteFolder('<?php echo $folder->id; ?>', '<?php echo $folder->folder_name; ?>')">
+                                                            <i class="mdi mdi-delete font-size-13 align-middle me-1"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             @foreach ($files as $file)
                                                 <tr>
                                                     <td>
@@ -165,7 +210,7 @@
                                                             {{ $file->filename }}
                                                         </a>
                                                     </td>
-                                                    <td>12-10-2020, 09:45</td>
+                                                    <td>{{  date("d M Y", strtotime($file->created_at)) }}</td>
                                                     <td>
                                                         <a class="btn btn-danger waves-effect waves-light btn-sm" data-bs-toggle="modal" data-bs-target="#delete-file-modal" 
                                                         onclick="deleteFile('<?php echo $file->id; ?>', '<?php echo $file->filename; ?>')">
@@ -213,6 +258,34 @@
         </div>
     </div>
 </div>
+<!-- Delete Folder Modal -->
+<div class="modal fade" id="delete-folder-modal" tabindex="-1" role="dialog" aria-labelledby="deletefileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deletefileModalLabel">
+                    Delete Folder
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <b id="name" class="text-danger"></b> ?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('delete.member-folder') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" id="id" value="">
+                    <button class="btn btn-outline-danger btn-sm" type="submit">
+                        Delete
+                    </button>
+                </form>
+                <button class="btn btn-outline-white btn-sm" data-bs-dismiss="modal" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('extra_js')
     
@@ -221,10 +294,18 @@
         $("#show-file-div").click(function() {  
              $(".file-upload-div").css('display', 'block');     
         });
+        $("#show-folder-div").click(function() {  
+             $(".folder-upload-div").css('display', 'block');     
+        });
     });
+
     function deleteFile(id, name ){
       $("#delete-file-modal #name").html(name);
       $("#delete-file-modal #id").val(id);
+    }
+    function deleteFolder(id, name ){
+      $("#delete-folder-modal #name").html(name);
+      $("#delete-folder-modal #id").val(id);
     }
 </script>
 <script src="/assets/js/pages/file-manager.init.js"></script>

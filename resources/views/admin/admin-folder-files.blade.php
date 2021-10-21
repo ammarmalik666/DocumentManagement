@@ -84,7 +84,7 @@
                                                 <i class="bx bx-file me-1"></i> Create Folder
                                             </a>
                                             <a class="btn btn-sm btn-outline-primary" href="javascript:void(0)" id="show-file-div">
-                                                <i class="bx bx-file me-1"></i> File
+                                                <i class="bx bx-file me-1"></i> Upload File
                                             </a>
                                         </div>
                                     </form>
@@ -93,10 +93,11 @@
                         </div>
                         <div class="box file-upload-div">
                             <div class="row mb-4">
-                                <div class="col-lg-6" id="dropzone">
-                                    <form action="{{ route('admin.uploadfiles') }}" method="POST" enctype="multipart/form-data">
+                                <div class="col-md-6" id="dropzone">
+                                    <form action="{{ route('admin.uploadfiles_inFolder') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="client_id" value="{{ $client_id }}">
+                                        <input type="hidden" name="slug" value="{{ $slug }}">
                                         <div class="form-group mb-3">
                                             <label for="">Filename</label>
                                             <input type="text" class="form-control" placeholder="Enter file name" name="filename">
@@ -110,13 +111,13 @@
                                             <label for="">Upload Files</label>
                                             <input type="file" class="form-control" placeholder="Upload Files" name="file">
                                             @error('file')
-                                            <span>
-                                                <p style="font-size:13px!important; color: #fd0710!important;">{{ $message }}*</p>
-                                            </span>
-                                        @enderror
+                                                <span>
+                                                    <p style="font-size:13px!important; color: #fd0710!important;">{{ $message }}*</p>
+                                                </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <button class="btn btn-primary">Upload</button>
+                                            <button class="btn btn-primary">Upload File</button>
                                         </div>
                                     </form>
                                 </div>
@@ -125,9 +126,10 @@
                         <div class="box folder-upload-div">
                             <div class="row mb-4">
                                 <div class="col-md-6" id="dropzone">
-                                    <form action="{{ route('admin.create_folder') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('admin.create_folderinfolder') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="client_id" value="{{ $client_id }}">
+                                        <input type="hidden" name="slug" value="{{ $slug }}">
                                         <div class="form-group mb-3">
                                             <label for="">Folder Name</label>
                                             <input type="text" class="form-control" placeholder="Enter Folder Name" name="folder_name">
@@ -235,7 +237,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="deletefileModalLabel">
+                <h4 class="modal-title" id="">
                     Delete File
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -292,15 +294,16 @@
 <script>
     $(document).ready(function(){
         $("#show-file-div").click(function() {  
-            $(".file-upload-div").css('display', 'block');     
+             $(".file-upload-div").css('display', 'block');     
         });
         $("#show-folder-div").click(function() {  
              $(".folder-upload-div").css('display', 'block');     
         });
     });
+
     function deleteFile(id, name ){
-        $("#delete-file-modal #name").html(name);
-        $("#delete-file-modal #id").val(id);
+      $("#delete-file-modal #name").html(name);
+      $("#delete-file-modal #id").val(id);
     }
     function deleteFolder(id, name ){
       $("#delete-folder-modal #name").html(name);

@@ -86,7 +86,7 @@
                                                 Individual Client
                                             @endif
                                         </td>
-                                        <td>13/10/21</td>
+                                        <td>{{  date("d M Y", strtotime($client->created_at)) }}</td>
                                         <td>
                                             <a href="javascript:void(0);" class="font-size-16 text-danger" data-bs-toggle="modal" data-bs-target="#delete-client-modal" onclick="deleteClient('<?php echo $client->id; ?>', '<?php echo $client->client_type; ?>')">
                                                 <i class="mdi mdi-delete"></i>
