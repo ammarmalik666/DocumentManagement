@@ -49,9 +49,14 @@ class AdminMainController extends Controller
         $contact_mobile             =  $request->contact_mobile; 
         $contact_phone              =  $request->contact_phone; 
 
-
         if ($client_type == "individual") {
-
+            $request->validate([
+                'client_name'                => 'required|max:50',
+                'client_email'               => 'required|unique:clients|email|max:33',
+                'client_phone'               => 'required|max:15',
+                'client_mobile'              => 'required|max:15',
+                'physical_address'           => 'required|max:50',
+            ]);
             $name               =   $client_name;
             $email              =   $client_email;
             $phone              =   $client_phone;
@@ -60,32 +65,33 @@ class AdminMainController extends Controller
             $postal_checkbox    =   $client_postal_checkbox;
             $status             =   1;
             $password           =   12345678;
-            $enc_password       = bcrypt($password);
-            // return $enc_password;
+            $enc_password       =   bcrypt($password);
 
             if ($postal_checkbox == "postal-address") {
                 $postal_address = $physical_address;
             }else{
+                $request->validate([
+                    'postal_address'   => 'required|max:50',
+                ]);
                 $postal_address = $client_postal_address;
             }
             $client_array = [
-                'name' => $name,
-                'email' => $email,
-                'phone' => $phone,
-                'mobile' => $mobile,
-                'physical_address' => $physical_address,
-                'postal_address' => $postal_address,
-                'status' => $status
+                'name'              => $name,
+                'email'             => $email,
+                'phone'             => $phone,
+                'mobile'            => $mobile,
+                'physical_address'  => $physical_address,
+                'postal_address'    => $postal_address,
+                'status'            => $status
             ]; 
             $client = IndividualClient::create($client_array);
             if($client)
             {
                 $client_id = $client->id;
-                // return $client_id;
                 $client_type_array = [
                     'client_type'           =>      $name,
                     'individual_client_id'  =>      $client_id,
-                    'email'                 =>      $email,
+                    'client_email'          =>      $email,
                     'password'              =>      $enc_password,
                     'status'                =>      $status,
                 ];
@@ -98,7 +104,17 @@ class AdminMainController extends Controller
             }
 
         }elseif($client_type == "business"){
-            // return 2;
+            $request->validate([
+                'business_name'                => 'required|max:50',
+                'business_email'               => 'required|unique:clients|email|max:33',
+                'business_phone'               => 'required|max:15',
+                'business_mobile'              => 'required|max:15',
+                'business_physical_address'    => 'required|max:50',
+                'contact_name'                 => 'required|max:50',
+                'contact_email'                => 'required|unique:clients|email|max:33',
+                'contact_mobile'               => 'required|max:15',
+                'contact_phone'                => 'required|max:15',
+            ]);
             $business_name               =   $business_name;
             $business_email              =   $business_email;
             $business_phone              =   $business_phone;
@@ -139,7 +155,7 @@ class AdminMainController extends Controller
                 $client_type_array = [
                     'client_type'           =>      $contact_name,
                     'business_client_id'    =>      $client_id,
-                    'email'                 =>      $contact_email,
+                    'client_email'          =>      $contact_email,
                     'password'              =>      $enc_password,
                     'status'                =>      $status,
                 ];

@@ -18,7 +18,7 @@ class ClientsMigration extends Migration
             $table->string('client_type');
             $table->string('individual_client_id')->nullable();
             $table->string('business_client_id')->nullable();
-            $table->string('email');
+            $table->string('client_email');
             $table->string('password');
             $table->integer('status');
             $table->timestamps();

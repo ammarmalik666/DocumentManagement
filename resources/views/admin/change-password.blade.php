@@ -91,7 +91,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <button type="submit" class="btn btn-primary">Change Passowrd</button>
+                                        <button type="submit" class="btn btn-primary">Change Password</button>
                                     </div>
                                 </div>
                             </div>

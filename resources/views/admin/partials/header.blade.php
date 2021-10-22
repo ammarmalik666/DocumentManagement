@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="/admin" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="/assets/images/logo.svg" alt="" height="22">
                     </span>
@@ -10,7 +10,7 @@
                         <img src="/assets/images/logo-dark.png" alt="" height="17">
                     </span>
                 </a>
-                <a href="index.html" class="logo logo-light">
+                <a href="/admin" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="/assets/images/logo-light.svg" alt="" height="22">
                     </span>

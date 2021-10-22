@@ -13,7 +13,7 @@ class Client extends Model
         'client_type',
         'individual_client_id',
         'business_client_id',
-        'email',
+        'client_email',
         'password',
         'status'
     ];
