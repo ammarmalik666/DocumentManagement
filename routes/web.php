@@ -68,6 +68,7 @@ Route::POST('/login', [ClientAuthController::class,'login'])->name('client.login
 Route::group(['middleware' => ['ClientAuth']], function(){
 
 	Route::GET('/dashboard', [ClientMainController::class,'dashboard_view']);
+	Route::GET('/my-folder/files/{slug}', [ClientMainController::class,'folder_files_view']);
 	Route::GET('/', [ClientMainController::class,'index']);
 	Route::GET('/setting', [ClientAuthController::class,'setting']);
 	Route::POST('/change-password', [ClientAuthController::class,'change_password'])->name('client.change_password');

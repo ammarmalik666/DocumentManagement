@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Phone Number <code>*</code></label>
-                                    <input type="text" class="form-control" name="client_phone" value="{{ old('client_phone') }}">
+                                    <input type="text" class="form-control" name="client_phone" maxlength="15" value="{{ old('client_phone') }}">
                                     @error('client_phone')
                                         <span>
                                             <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Mobile Number <code>*</code></label>
-                                    <input type="text" class="form-control" name="client_mobile" value="{{ old('client_mobile') }}">
+                                    <input type="text" class="form-control" name="client_mobile" maxlength="15" value="{{ old('client_mobile') }}">
                                     @error('client_mobile')
                                         <span>
                                             <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>
@@ -183,7 +183,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Business Phone <code>*</code></label>
-                                <input type="text" class="form-control" placeholder="Enter business phone" name="business_phone" value="{{ old('business_phone') }}">
+                                <input type="text" class="form-control" placeholder="Enter business phone" maxlength="15" name="business_phone" value="{{ old('business_phone') }}">
                                 @error('business_phone')
                                     <span>
                                         <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>
@@ -192,7 +192,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Contact Phone <code>*</code></label>
-                                <input type="text" class="form-control" placeholder="Enter contact phone" name="contact_phone" value="{{ old('contact_phone') }}">
+                                <input type="text" class="form-control" placeholder="Enter contact phone" maxlength="15" name="contact_phone" value="{{ old('contact_phone') }}">
                                 @error('contact_phone')
                                     <span>
                                         <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>
@@ -203,7 +203,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Business Mobile <code>*</code></label>
-                                <input type="text" class="form-control" placeholder="Enter business mobile" name="business_mobile" value="{{ old('business_mobile') }}">
+                                <input type="text" class="form-control" placeholder="Enter business mobile" maxlength="15" name="business_mobile" value="{{ old('business_mobile') }}">
                                 @error('business_mobile')
                                     <span>
                                         <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>
@@ -212,7 +212,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Contact Mobile <code>*</code></label>
-                                <input type="text" class="form-control" placeholder="Enter contact mobile" name="contact_mobile" value="{{ old('contact_mobile') }}">
+                                <input type="text" maxlength="15" class="form-control" placeholder="Enter contact mobile" name="contact_mobile" value="{{ old('contact_mobile') }}">
                                 @error('contact_mobile')
                                     <span>
                                         <p style="font-size:13px!important; margin-bottom:0px!important; color: #fd0710!important;">{{ $message }}*</p>

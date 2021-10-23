@@ -2,7 +2,7 @@
 
 @section('meta')
 
-<title>Member Files | {{config('app.name')}}</title>
+<title>Dashboard| {{config('app.name')}}</title>
 
 @endsection
 
@@ -65,7 +65,7 @@
                                     <form class="mt-4 mt-sm-0 float-sm-end d-flex align-items-center">
                                         <div class="search-box mb-2 me-2">
                                             <div class="position-relative">
-                                                <input type="text" class="form-control bg-light border-light rounded" placeholder="Search...">
+                                                <input type="text" class="form-control bg-light border-light rounded" placeholder="Search..." id="search">
                                                 <i class="bx bx-search-alt search-icon"></i>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="mt-0">
                             <div class="table-responsive">
-                                <table class="table align-middle table-nowrap table-hover mb-0">
+                                <table class="table align-middle table-nowrap table-hover mb-0" id="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
@@ -94,6 +94,17 @@
                                                 </td>
                                             </tr>
                                         @else
+                                            @foreach ($folders as $folder)
+                                                <tr>
+                                                    <td>
+                                                        <a href="/my-folder/files/{{ $folder->slug }}" class="text-dark fw-medium">
+                                                            <i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i>
+                                                            {{ $folder->folder_name }}
+                                                        </a>
+                                                    </td>
+                                                    <td style="text-align: right; padding-right:20px;">{{  date("d M Y", strtotime($folder->created_at)) }}</td>
+                                                </tr>
+                                            @endforeach
                                             @foreach ($files as $file)
                                                 <tr>
                                                     <td>
@@ -124,7 +135,7 @@
                                                         </a>
                                                     </td>
                                                     <td style="text-align: right; padding-right:20px;">
-                                                        12-10-2020, 09:45
+                                                        {{  date("d M Y", strtotime($file->created_at)) }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -144,11 +155,14 @@
 @section('extra_js')
     
 <script>
-    $(document).ready(function(){
+    var $rows = $('#table tr');
+    $('#search').keyup(function() {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
         
-        $("#show-file-div").click(function() {  
-             $(".file-upload-div").css('display', 'block');     
-        });
+        $rows.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
     });
 </script>
 <script src="/assets/js/pages/file-manager.init.js"></script>

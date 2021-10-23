@@ -37,6 +37,10 @@
                                 <div class="alert alert-success" role="alert">
                                     Password has been succesfully updated.
                                 </div>
+                            @elseif($errors->first() == 'old_pass_as_new')
+                                <div class="alert alert-warning" role="alert">
+                                    Old Password cannot be used as a new password.
+                                </div>
                             @elseif($errors->first() == 'c_pass_not_match')
                                 <div class="alert alert-danger" role="alert">
                                     Current password doesnot match.

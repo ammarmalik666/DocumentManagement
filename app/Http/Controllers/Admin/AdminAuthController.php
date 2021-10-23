@@ -62,8 +62,12 @@ class AdminAuthController extends Controller
 
             if(password_verify($current_password, $dbPass))
             {
-                $query = DB::table('admins')->where('email', $email)->update(['password' => $new_e_password]);
-                return back()->withErrors('success');
+                if ($new_password == $current_password) {
+                    return back()->withErrors('old_pass_as_new');
+                }else{
+                    $query = DB::table('admins')->where('email', $email)->update(['password' => $new_e_password]);
+                    return back()->withErrors('success');
+                }
             }
             else
             {

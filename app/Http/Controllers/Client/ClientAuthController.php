@@ -22,7 +22,7 @@ class ClientAuthController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        $user = Client::where('email', $email)->get();
+        $user = Client::where('client_email', $email)->get();
         if(!$user->isEmpty())
         {   
             $dbPass = $user[0]->password;
@@ -55,7 +55,7 @@ class ClientAuthController extends Controller
         $new_password = $request->new_password;
         $email = $request->session()->get('ClientEmail');
         $current_password = $request->current_password;
-        $user = Client::where('email', $email)->get();
+        $user = Client::where('client_email', $email)->get();
         if(!$user->isEmpty())
         {   
             $dbPass = $user[0]->password;
@@ -63,7 +63,7 @@ class ClientAuthController extends Controller
 
             if(password_verify($current_password, $dbPass))
             {
-                $query = DB::table('clients')->where('email', $email)->update(['password' => $new_e_password]);
+                $query = DB::table('clients')->where('client_email', $email)->update(['password' => $new_e_password]);
                 return back()->withErrors('success');
             }
             else

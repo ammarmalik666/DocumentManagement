@@ -51,10 +51,10 @@ class AdminMainController extends Controller
 
         if ($client_type == "individual") {
             $request->validate([
-                'client_name'                => 'required|max:50',
+                'client_name'                => 'required|regex:/^[a-zA-Z]+$/u|max:50',
                 'client_email'               => 'required|unique:clients|email|max:33',
-                'client_phone'               => 'required|max:15',
-                'client_mobile'              => 'required|max:15',
+                'client_phone'               => 'required|numeric',
+                'client_mobile'              => 'required|numeric',
                 'physical_address'           => 'required|max:50',
             ]);
             $name               =   $client_name;
@@ -105,15 +105,15 @@ class AdminMainController extends Controller
 
         }elseif($client_type == "business"){
             $request->validate([
-                'business_name'                => 'required|max:50',
+                'business_name'                => 'required|regex:/^[a-zA-Z]+$/u|max:50',
                 'business_email'               => 'required|unique:clients|email|max:33',
-                'business_phone'               => 'required|max:15',
-                'business_mobile'              => 'required|max:15',
+                'business_phone'               => 'required|numeric',
+                'business_mobile'              => 'required|numeric',
                 'business_physical_address'    => 'required|max:50',
-                'contact_name'                 => 'required|max:50',
+                'contact_name'                 => 'required|regex:/^[a-zA-Z]+$/u|max:50',
                 'contact_email'                => 'required|unique:clients|email|max:33',
-                'contact_mobile'               => 'required|max:15',
-                'contact_phone'                => 'required|max:15',
+                'contact_mobile'               => 'required|numeric',
+                'contact_phone'                => 'required|numeric',
             ]);
             $business_name               =   $business_name;
             $business_email              =   $business_email;
@@ -194,7 +194,7 @@ class AdminMainController extends Controller
     public function member_files ($id)
     {
         $client_id = $id;
-        $files = MemberUpload::where('client_id' , $client_id)->get();
+        $files = MemberUpload::where('client_id' , $client_id)->where('slug', null)->get();
         $folders = MemberFolder::where('client_id', $client_id)->where('access_slug', null)->get();
         return view('admin.member-files', [
             'client_id' => $client_id, 
@@ -384,7 +384,7 @@ class AdminMainController extends Controller
             $file = $request->file('file');
             $orignal_name = $file->getClientOriginalName();
             $name = time().rand(1,100000000).'.'.$file->extension();
-            $move_file = $file->move(public_path().'/uploads/member-files', $name);  
+            $move_file = $file->move(public_path().'/uploads/admin-files', $name);  
             $status = 1;
             if ($move_file) {
                 $array = [
